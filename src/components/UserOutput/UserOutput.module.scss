@@ -1,0 +1,12 @@
+.toast-container {
+    width: 90%;
+    padding: 1rem 1rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+
+    @media (min-width: 600px) {
+        width: 70%;
+    }
+
+
+}

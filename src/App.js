@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import MainCard from "./components/MainCard/MainCard";
+import UserOutput from "./components/UserOutput/UserOutput";
+
+import { useState } from "react";
+
+let DUMMY_DATA = [
+	{
+		id: 1,
+		username: "ayo",
+		age: 31,
+	},
+
+	{
+		id: 2,
+		username: "angelica",
+		age: 33,
+	},
+	{
+		id: 3,
+		username: "Inger",
+		age: 61,
+	},
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const [updateData, setUpdateData] = useState(DUMMY_DATA);
 
+	const updateDatabaseHandler = (newUserData) => {
+		setUpdateData((previousState) => {
+			return [newUserData, ...previousState];
+		});
+	};
+
+	return (
+		<div>
+			<MainCard onUserInput={updateDatabaseHandler} />
+			<UserOutput userData={updateData} />
+		</div>
+	);
+}
 export default App;

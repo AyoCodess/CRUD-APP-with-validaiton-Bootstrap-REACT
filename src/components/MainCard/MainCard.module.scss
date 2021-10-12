@@ -1,0 +1,14 @@
+.card-container {
+
+    width: 90%;
+    padding: 2rem 2rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+
+    @media (min-width: 600px) {
+        width: 70%;
+    }
+
+}
+
+
