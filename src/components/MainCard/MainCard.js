@@ -8,7 +8,7 @@ import InvalidModal from "../InvalidModal/InvalidModal";
 
 function MainCard(props) {
 	const [username, setUsername] = useState("");
-	const [age, setAge] = useState(null);
+	const [age, setAge] = useState(0);
 	const [modalShow, setModalShow] = useState(false);
 
 	const userInputHandler = (event) => {
