@@ -9,17 +9,20 @@ import InvalidModal from "../InvalidModal/InvalidModal";
 function MainCard(props) {
 	const [username, setUsername] = useState("");
 	const [age, setAge] = useState(0);
-	const [modalShow, setModalShow] = useState(false);
+
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
 
 	const userInputHandler = (event) => {
 		event.preventDefault();
-		if (username.trim().length < 0) {
+		if (username.trim().length < 0 || username === "") {
 			console.log("invalid");
-			return setModalShow(true);
+			return setShow(true);
 		}
 		if (age <= 0 || age === "") {
 			console.log("invalid");
-			return setModalShow(true);
+			return setShow(true);
 		}
 
 		const newUserInput = {
@@ -40,7 +43,7 @@ function MainCard(props) {
 
 	return (
 		<div>
-			{modalShow && <InvalidModal />}
+			{show && <InvalidModal show={show} onHide={handleClose} />}
 
 			<Card className={styles["card-container"]}>
 				<form onSubmit={userInputHandler}>
