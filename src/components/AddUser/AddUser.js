@@ -40,7 +40,7 @@ function AddUser(props) {
 			setNotValidUsername("");
 			setNotValidUserAge("");
 			setNotValidUserAgeAndUsername(
-				"Please enter a valid username and age"
+				"Please enter a valid username and age."
 			);
 
 			return setShow(true);
@@ -58,7 +58,7 @@ function AddUser(props) {
 		if (+age <= 0 || +age === "") {
 			setNotValidUserAgeAndUsername("");
 			setNotValidUsername("");
-			setNotValidUserAge("Please enter a valid age");
+			setNotValidUserAge("Please enter a valid age.");
 			return setShow(true);
 		}
 
@@ -67,7 +67,7 @@ function AddUser(props) {
 			setNotValidUsername("");
 			setNotValidUserAge("");
 			setNotValidUserAgeAndUsername(
-				"Username already exists. Try another?"
+				"Username already exists. Try another? Max username length is 15 Characters."
 			);
 
 			return setShow(true);
