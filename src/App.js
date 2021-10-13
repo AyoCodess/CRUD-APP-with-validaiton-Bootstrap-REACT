@@ -7,13 +7,13 @@ import { useState } from "react";
 let DUMMY_DATA = [
 	{
 		id: 1,
-		username: "ayo",
+		username: "Ayo",
 		age: 31,
 	},
 
 	{
 		id: 2,
-		username: "angelica",
+		username: "Angelica",
 		age: 33,
 	},
 	{

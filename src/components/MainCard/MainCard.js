@@ -8,20 +8,43 @@ import InvalidModal from "../InvalidModal/InvalidModal";
 
 function MainCard(props) {
 	const [username, setUsername] = useState("");
-	const [age, setAge] = useState(0);
-
+	const [age, setAge] = useState("");
 	const [show, setShow] = useState(false);
+	const [notValidUsername, setNotValidUsername] = useState("");
+	const [notValidAge, setNotValidUserAge] = useState("");
+	const [notValidAgeAndUsername, setNotValidUserAgeAndUsername] =
+		useState("");
 
 	const handleClose = () => setShow(false);
 
+	// Handing and verifying the user inputted data
 	const userInputHandler = (event) => {
 		event.preventDefault();
+
+		if (
+			(age <= 0 || age === "") &&
+			(username.trim().length < 0 || username === "")
+		) {
+			setNotValidUsername("");
+			setNotValidUserAge("");
+			setNotValidUserAgeAndUsername(
+				"Please enter a valid username and age"
+			);
+
+			return setShow(true);
+		}
+
 		if (username.trim().length < 0 || username === "") {
-			console.log("invalid");
+			setNotValidUserAge("");
+			setNotValidUserAgeAndUsername("");
+			setNotValidUsername("Please enter a valid username");
+
 			return setShow(true);
 		}
 		if (age <= 0 || age === "") {
-			console.log("invalid");
+			setNotValidUserAgeAndUsername("");
+			setNotValidUsername("");
+			setNotValidUserAge("Please enter a valid age");
 			return setShow(true);
 		}
 
@@ -31,19 +54,35 @@ function MainCard(props) {
 			age: age,
 		};
 		props.onUserInput(newUserInput);
+
+		setAge("");
+		setUsername("");
 	};
 
 	const usernameChangeHandler = (event) => {
-		setUsername(event.target.value);
+		return setUsername(event.target.value);
 	};
 
 	const ageChangeHandler = (event) => {
-		setAge(event.target.value);
+		return setAge(event.target.value);
+	};
+
+	const modalCloseHandler = () => {
+		return setShow(false);
 	};
 
 	return (
 		<div>
-			{show && <InvalidModal show={show} onHide={handleClose} />}
+			{show && (
+				<InvalidModal
+					show={show}
+					onHide={handleClose}
+					modalClose={modalCloseHandler}
+					username={notValidUsername}
+					age={notValidAge}
+					usernameAge={notValidAgeAndUsername}
+				/>
+			)}
 
 			<Card className={styles["card-container"]}>
 				<form onSubmit={userInputHandler}>
@@ -54,12 +93,14 @@ function MainCard(props) {
 							type="text"
 							placeholder="your username"
 							onChange={usernameChangeHandler}
+							value={username}
 						/>
 						<Form.Label className="mt-3">Age (Years) </Form.Label>
 						<Form.Control
 							type="number"
 							placeholder="your age"
 							onChange={ageChangeHandler}
+							value={age}
 						/>
 					</Form.Group>
 					<Button className="mt-3" variant="primary" type="submit">

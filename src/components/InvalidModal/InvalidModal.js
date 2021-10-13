@@ -2,7 +2,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 function InvalidModal(props) {
-	console.log(props);
+	const exitModal = (event) => {
+		if (event.target === event.target.closest("button")) {
+			return props.modalClose();
+		}
+	};
+
 	return (
 		<div>
 			<Modal
@@ -10,19 +15,17 @@ function InvalidModal(props) {
 				size="lg"
 				aria-labelledby="contained-modal-title-vcenter"
 				centered
+				onClick={exitModal}
 			>
 				<Modal.Header closeButton>
 					<Modal.Title id="contained-modal-title-vcenter">
-						Modal heading
+						Error
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<p>
-						Cras mattis consectetur purus sit amet fermentum. Cras
-						justo odio, dapibus ac facilisis in, egestas eget quam.
-						Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.
-					</p>
+					{props.username && !props.age && <p>{props.username}</p>}
+					{props.age && !props.username && <p>{props.age}</p>}
+					{props.usernameAge && <p>{props.usernameAge}</p>}
 				</Modal.Body>
 				<Modal.Footer>
 					<Button onClick={props.onHide}>Close</Button>

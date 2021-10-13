@@ -18,7 +18,7 @@ function UserOutput(props) {
 			{props.userData.map((user) => {
 				return (
 					!closeToast && (
-						<Toast
+						<Toast 
 							key={user.id}
 							id={user.id}
 							onClose={exitToast}
