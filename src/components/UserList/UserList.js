@@ -1,4 +1,4 @@
-import styles from "./UserOutput.module.scss";
+import styles from "./UserList.module.scss";
 
 import { Toast } from "react-bootstrap";
 import { useState } from "react";
@@ -14,27 +14,29 @@ function UserOutput(props) {
 	};
 
 	return (
-		<div>
+		<ul>
 			{props.userData.map((user) => {
 				return (
 					!closeToast && (
-						<Toast
-							key={user.id}
-							id={user.id}
-							onClose={exitToast}
-							className={styles["toast-container"]}
-						>
-							<Toast.Header>
-								<strong className="me-auto">
-									{user.username}
-								</strong>
-							</Toast.Header>
-							<Toast.Body>{user.age}</Toast.Body>
-						</Toast>
+						<li>
+							<Toast
+								key={user.id}
+								id={user.id}
+								onClose={exitToast}
+								className={styles["toast-container"]}
+							>
+								<Toast.Header>
+									<strong className="me-auto">
+										{user.username}
+									</strong>
+								</Toast.Header>
+								<Toast.Body>{user.age}</Toast.Body>
+							</Toast>
+						</li>
 					)
 				);
 			})}
-		</div>
+		</ul>
 	);
 }
 

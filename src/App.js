@@ -1,6 +1,6 @@
 import "./App.scss";
-import AddUser from "./components/Form/Form";
-import UserOutput from "./components/UserOutput/UserOutput";
+import AddUser from "./components/AddUser/AddUser";
+import UserList from "./components/UserList/UserList";
 
 import { useState } from "react";
 
@@ -35,7 +35,7 @@ function App() {
 	return (
 		<div>
 			<AddUser onUserInput={updateDatabaseHandler} />
-			<UserOutput userData={updateData} />
+			<UserList userData={updateData} />
 		</div>
 	);
 }

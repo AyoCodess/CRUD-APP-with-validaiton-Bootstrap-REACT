@@ -1,9 +1,10 @@
 import Button from "react-bootstrap/Button";
-import styles from "./Form.module.scss";
+import styles from "./AddUser.module.scss";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import InvalidModal from "../InvalidModal/InvalidModal";
+import fs from "react";
 
 function AddUser(props) {
 	const [username, setUsername] = useState("");
@@ -40,7 +41,7 @@ function AddUser(props) {
 
 			return setShow(true);
 		}
-		if (age <= 0 || age === "") {
+		if (+age <= 0 || age === "") {
 			setNotValidUserAgeAndUsername("");
 			setNotValidUsername("");
 			setNotValidUserAge("Please enter a valid age");
@@ -86,21 +87,25 @@ function AddUser(props) {
 			<Card className={styles["card-container"]}>
 				<form onSubmit={userInputHandler}>
 					<Form.Group className="mb-3">
-						<Form.Label>Username</Form.Label>
+						<Form.Label htmlFor="username">Username</Form.Label>
 						<Form.Control
 							className={styles.label}
 							type="text"
 							placeholder="your username"
 							onChange={usernameChangeHandler}
 							value={username}
+							id={username}
 						/>
-						<Form.Label className="mt-3">Age (Years) </Form.Label>
+						<Form.Label className="mt-3" htmlFor="age">
+							Age (Years)
+						</Form.Label>
 						<Form.Control
 							type="number"
 							placeholder="your age"
 							onChange={ageChangeHandler}
 							value={age}
 							min={0}
+							id={username}
 						/>
 					</Form.Group>
 					<Button className="mt-3" variant="primary" type="submit">
