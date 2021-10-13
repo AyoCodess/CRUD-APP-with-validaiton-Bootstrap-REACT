@@ -1,4 +1,3 @@
-
 import Button from "react-bootstrap/Button";
 import styles from "./Form.module.scss";
 import Card from "react-bootstrap/Card";
@@ -6,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import InvalidModal from "../InvalidModal/InvalidModal";
 
-function MainCard(props) {
+function AddUser(props) {
 	const [username, setUsername] = useState("");
 	const [age, setAge] = useState("");
 	const [show, setShow] = useState(false);
@@ -113,4 +112,4 @@ function MainCard(props) {
 	);
 }
 
-export default MainCard;
+export default AddUser;

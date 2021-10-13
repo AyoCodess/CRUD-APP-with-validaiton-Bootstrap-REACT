@@ -1,5 +1,5 @@
 import "./App.scss";
-import MainCard from "./components/Form/Form";
+import AddUser from "./components/Form/Form";
 import UserOutput from "./components/UserOutput/UserOutput";
 
 import { useState } from "react";
@@ -34,7 +34,7 @@ function App() {
 
 	return (
 		<div>
-			<MainCard onUserInput={updateDatabaseHandler} />
+			<AddUser onUserInput={updateDatabaseHandler} />
 			<UserOutput userData={updateData} />
 		</div>
 	);
