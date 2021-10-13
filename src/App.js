@@ -33,10 +33,10 @@ function App() {
 	};
 
 	return (
-		<div>
+		<>
 			<AddUser onUserInput={updateDatabaseHandler} />
 			<UserList userData={updateData} />
-		</div>
+		</>
 	);
 }
 export default App;

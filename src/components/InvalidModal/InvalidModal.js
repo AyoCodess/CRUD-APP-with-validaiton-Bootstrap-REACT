@@ -9,7 +9,7 @@ function InvalidModal(props) {
 	};
 
 	return (
-		<div>
+		<>
 			<Modal
 				show={props.show}
 				size="lg"
@@ -31,7 +31,7 @@ function InvalidModal(props) {
 					<Button onClick={props.onHide}>Close</Button>
 				</Modal.Footer>
 			</Modal>
-		</div>
+		</>
 	);
 }
 

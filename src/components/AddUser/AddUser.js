@@ -72,7 +72,7 @@ function AddUser(props) {
 	};
 
 	return (
-		<div>
+		<>
 			{show && (
 				<InvalidModal
 					show={show}
@@ -113,7 +113,7 @@ function AddUser(props) {
 					</Button>
 				</form>
 			</Card>
-		</div>
+		</>
 	);
 }
 
