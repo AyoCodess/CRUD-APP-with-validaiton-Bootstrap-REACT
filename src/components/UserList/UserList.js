@@ -3,7 +3,7 @@ import styles from "./UserList.module.scss";
 import { Toast } from "react-bootstrap";
 import { useState } from "react";
 
-function UserOutput(props) {
+function UserList(props) {
 	const [closeToast, setCloseToast] = useState(false);
 
 	const exitToast = (event) => {
@@ -40,4 +40,4 @@ function UserOutput(props) {
 	);
 }
 
-export default UserOutput;
+export default UserList;
