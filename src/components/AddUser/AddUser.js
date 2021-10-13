@@ -7,7 +7,6 @@ import { useState } from "react";
 import InvalidModal from "../InvalidModal/InvalidModal";
 
 function AddUser(props) {
-	console.log(props.userData);
 	const [username, setUsername] = useState("");
 	const [age, setAge] = useState("");
 	const [show, setShow] = useState(false);
@@ -50,7 +49,9 @@ function AddUser(props) {
 		if (username.trim().length < 0 || username === "") {
 			setNotValidUserAge("");
 			setNotValidUserAgeAndUsername("");
-			setNotValidUsername("Please enter a valid username");
+			setNotValidUsername(
+				"Please enter a valid username. Max username length is 15 Characters."
+			);
 
 			return setShow(true);
 		}
@@ -73,10 +74,11 @@ function AddUser(props) {
 		}
 
 		const newUserInput = {
-			id: Math.random().toString(),
+			id: new Date().valueOf(),
 			username: username,
 			age: +age,
 		};
+
 		props.onUserInput(newUserInput);
 
 		setAge("");
@@ -119,6 +121,7 @@ function AddUser(props) {
 							onChange={usernameChangeHandler}
 							value={username}
 							id={username}
+							maxLength="15"
 						/>
 						<Form.Label className="mt-3" htmlFor="age">
 							Age (Years)
