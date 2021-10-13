@@ -34,7 +34,10 @@ function App() {
 
 	return (
 		<>
-			<AddUser onUserInput={updateDatabaseHandler} />
+			<AddUser
+				onUserInput={updateDatabaseHandler}
+				userData={updateData}
+			/>
 			<UserList userData={updateData} />
 		</>
 	);

@@ -7,6 +7,7 @@ import { useState } from "react";
 import InvalidModal from "../InvalidModal/InvalidModal";
 
 function AddUser(props) {
+	console.log(props.userData);
 	const [username, setUsername] = useState("");
 	const [age, setAge] = useState("");
 	const [show, setShow] = useState(false);
@@ -34,7 +35,7 @@ function AddUser(props) {
 		event.preventDefault();
 
 		if (
-			(age <= 0 || age === "") &&
+			(+age <= 0 || age === "") &&
 			(username.trim().length < 0 || username === "")
 		) {
 			setNotValidUsername("");
@@ -53,7 +54,7 @@ function AddUser(props) {
 
 			return setShow(true);
 		}
-		if (+age <= 0 || age === "") {
+		if (+age <= 0 || +age === "") {
 			setNotValidUserAgeAndUsername("");
 			setNotValidUsername("");
 			setNotValidUserAge("Please enter a valid age");
@@ -61,7 +62,7 @@ function AddUser(props) {
 		}
 
 		// checking for same userName
-		if (username === username) {
+		if (props.userData.some((user) => user.username === username)) {
 			setNotValidUsername("");
 			setNotValidUserAge("");
 			setNotValidUserAgeAndUsername(
@@ -74,7 +75,7 @@ function AddUser(props) {
 		const newUserInput = {
 			id: Math.random().toString(),
 			username: username,
-			age: age,
+			age: +age,
 		};
 		props.onUserInput(newUserInput);
 
