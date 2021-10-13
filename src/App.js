@@ -1,5 +1,5 @@
 import "./App.scss";
-import MainCard from "./components/MainCard/MainCard";
+import MainCard from "./components/Form/Form";
 import UserOutput from "./components/UserOutput/UserOutput";
 
 import { useState } from "react";

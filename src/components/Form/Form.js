@@ -1,6 +1,6 @@
-import "./MainCard.module.scss";
+
 import Button from "react-bootstrap/Button";
-import styles from "./MainCard.module.scss";
+import styles from "./Form.module.scss";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
@@ -101,6 +101,7 @@ function MainCard(props) {
 							placeholder="your age"
 							onChange={ageChangeHandler}
 							value={age}
+							min={0}
 						/>
 					</Form.Group>
 					<Button className="mt-3" variant="primary" type="submit">
