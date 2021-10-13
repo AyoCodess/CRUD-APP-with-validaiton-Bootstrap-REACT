@@ -2,7 +2,6 @@ import styles from "./UserOutput.module.scss";
 
 import { Toast } from "react-bootstrap";
 import { useState } from "react";
-import { childNodes } from "dom-helpers";
 
 function UserOutput(props) {
 	const [closeToast, setCloseToast] = useState(false);
@@ -11,6 +10,7 @@ function UserOutput(props) {
 		const element = event.target;
 		const parentToast = element.closest(".toast");
 		parentToast.classList.remove("show");
+		setCloseToast(false);
 	};
 
 	return (
@@ -18,7 +18,7 @@ function UserOutput(props) {
 			{props.userData.map((user) => {
 				return (
 					!closeToast && (
-						<Toast 
+						<Toast
 							key={user.id}
 							id={user.id}
 							onClose={exitToast}
