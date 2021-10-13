@@ -18,9 +18,8 @@ function UserList(props) {
 			{props.userData.map((user) => {
 				return (
 					!closeToast && (
-						<li>
+						<li key={user.id}>
 							<Toast
-								key={user.id}
 								id={user.id}
 								onClose={exitToast}
 								className={styles["toast-container"]}
