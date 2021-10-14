@@ -16,6 +16,6 @@ I used this project to practice essential react core concepts like...
 * React Bootstrap 
 * CSS Modules
 
-## Please give me feedback by forking and refactoring. Thank you
+### Please give me feedback by forking and refactoring. Thank you
 
-## Live App: https://ayocodes-react-foundations.netlify.app/
+### Live App: https://ayocodes-react-foundations.netlify.app/

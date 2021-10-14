@@ -33,17 +33,16 @@ function App() {
 	};
 
 	// local storage issue
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(() => {
+		localStorage.setItem("OLD-USER", "no");
+	});
 
 	const isNewUserLoggedIn = () => {
-		const storedUserLogin = localStorage.getItem("OLD-USER");
-
-		if (storedUserLogin === "yes") {
-			setIsLoggedIn(true);
-		}
+		setIsLoggedIn(() => {
+			localStorage.setItem("OLD-USER", "yes");
+		});
+		console.log(isLoggedIn);
 	};
-
-	useEffect(isNewUserLoggedIn, []);
 
 	console.log(isLoggedIn);
 
@@ -51,6 +50,7 @@ function App() {
 		<>
 			<AddUser
 				onUserInput={updateDatabaseHandler}
+				onLogin={isNewUserLoggedIn}
 				userData={updateData}
 			/>
 			<UserList userData={updateData} />
