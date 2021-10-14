@@ -28,7 +28,7 @@ function App() {
 
 	// local storage issue
 	const [isLoggedIn, setIsLoggedIn] = useState(() => {
-		return localStorage.getItem("OLD-USER");
+		return localStorage.getItem("OLD-USER") === "yes";
 	});
 
 	console.log("1", isLoggedIn);
