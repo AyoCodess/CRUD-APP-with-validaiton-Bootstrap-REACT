@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import styles from "./AddUser.module.scss";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import PropTypes from "prop-types";
+
 import { useState } from "react";
 import InvalidModal from "../InvalidModal/InvalidModal";
 
@@ -16,18 +16,6 @@ function AddUser(props) {
 		useState("");
 
 	const handleClose = () => setShow(false);
-
-	// AddUser.propTypes = {
-	// 	data: PropTypes.arrayOf(
-	// 		PropTypes.shape({
-	// 			id: PropTypes.number,
-	// 			username: PropTypes.string,
-	// 			age: PropTypes.number,
-	// 		})
-	// 	).isRequired,
-
-	// 	onUserInput: PropTypes.func.isRequired,
-	// };
 
 	// Handing and verifying the user inputted data
 	const userInputHandler = (event) => {
@@ -59,6 +47,7 @@ function AddUser(props) {
 			setNotValidUserAgeAndUsername("");
 			setNotValidUsername("");
 			setNotValidUserAge("Please enter a valid age.");
+
 			return setShow(true);
 		}
 
@@ -83,6 +72,9 @@ function AddUser(props) {
 
 		setAge("");
 		setUsername("");
+
+		// local storage issue
+		localStorage.setItem("OLD-USER", "yes");
 	};
 
 	const usernameChangeHandler = (event) => {

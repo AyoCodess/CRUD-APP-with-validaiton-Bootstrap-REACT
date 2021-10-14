@@ -2,7 +2,7 @@ import "./App.scss";
 import AddUser from "./components/AddUser/AddUser";
 import UserList from "./components/UserList/UserList";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 let DUMMY_DATA = [
 	{
@@ -31,6 +31,21 @@ function App() {
 			return [newUserData, ...previousState];
 		});
 	};
+
+	// local storage issue
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	const isNewUserLoggedIn = () => {
+		const storedUserLogin = localStorage.getItem("OLD-USER");
+
+		if (storedUserLogin === "yes") {
+			setIsLoggedIn(true);
+		}
+	};
+
+	useEffect(isNewUserLoggedIn, []);
+
+	console.log(isLoggedIn);
 
 	return (
 		<>
