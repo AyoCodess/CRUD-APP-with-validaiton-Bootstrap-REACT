@@ -17,7 +17,6 @@ function AddUser(props) {
 
 	const handleClose = () => setShow(false);
 
-
 	// Handing and verifying the user inputted data
 	const userInputHandler = (event) => {
 		event.preventDefault();
@@ -42,16 +41,12 @@ function AddUser(props) {
 				"Please enter a valid username. Max username length is 15 Characters."
 			);
 
-			props.onLogin();
-
 			return setShow(true);
 		}
 		if (+age <= 0 || +age === "") {
 			setNotValidUserAgeAndUsername("");
 			setNotValidUsername("");
 			setNotValidUserAge("Please enter a valid age.");
-
-			props.onLogin();
 
 			return setShow(true);
 		}
@@ -63,8 +58,6 @@ function AddUser(props) {
 			setNotValidUserAgeAndUsername(
 				"Username already exists. Try another? Max username length is 15 Characters."
 			);
-
-			props.onLogin();
 
 			return setShow(true);
 		}
