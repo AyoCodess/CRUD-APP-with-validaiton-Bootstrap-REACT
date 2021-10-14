@@ -24,25 +24,24 @@ let DUMMY_DATA = [
 ];
 
 function App() {
+	const [updateData, setUpdateData] = useState(DUMMY_DATA);
+
 	// local storage issue
 	const [isLoggedIn, setIsLoggedIn] = useState(() => {
-		localStorage.setItem("OLD-USER", "no");
+		return localStorage.getItem("OLD-USER");
 	});
 
-	const getUser = localStorage.getItem("OLD-USER");
-
-	console.log(getUser);
-
-	const [updateData, setUpdateData] = useState(DUMMY_DATA);
+	console.log("1", isLoggedIn);
 
 	const updateDatabaseHandler = (newUserData) => {
 		setUpdateData((previousState) => {
 			return [newUserData, ...previousState];
 		});
 
-		setIsLoggedIn(() => {
-			localStorage.setItem("OLD-USER", "yes");
-		});
+		localStorage.setItem("OLD-USER", "yes");
+		setIsLoggedIn(true);
+
+		console.log("2", isLoggedIn);
 	};
 
 	return (
